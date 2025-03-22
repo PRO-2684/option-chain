@@ -1,26 +1,9 @@
+#![doc = include_str!("../README.md")]
+#![deny(missing_docs)]
+
 /// A macro for using `?` operator in functions that don't return `Option`.
 ///
-/// # Examples
-///
-/// ```rust
-/// use option_chain::opt;
-///
-/// struct Test1 {
-///     a: Option<Test2>,
-/// }
-/// struct Test2 {
-///     b: Option<Test3>,
-/// }
-/// struct Test3 {
-///     c: i32,
-/// }
-///
-/// let v = Test1 {
-///     a: Some(Test2 { b: Some(Test3 { c: 42 }) }),
-/// };
-/// let v = opt!(v.a?.b?.c);
-/// assert_eq!(v.unwrap(), 42);
-/// ```
+/// See [crate level documentation](crate) for more information.
 #[macro_export]
 macro_rules! opt {
     ($e:expr) => {
