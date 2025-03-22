@@ -1,5 +1,7 @@
 #![doc = include_str!("../README.md")]
+#![no_std]
 #![deny(missing_docs)]
+#![warn(clippy::all, clippy::nursery, clippy::pedantic, clippy::cargo)]
 
 /// A macro for using `?` operator in functions that don't return `Option`.
 ///
