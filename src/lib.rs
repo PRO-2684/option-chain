@@ -1,4 +1,6 @@
 #![doc = include_str!("../README.md")]
+#![doc(html_favicon_url = "https://raw.githubusercontent.com/PRO-2684/option-chain/main/logo.svg")]
+#![doc(html_logo_url = "https://raw.githubusercontent.com/PRO-2684/option-chain/main/logo.svg")]
 #![no_std]
 #![deny(missing_docs)]
 #![warn(clippy::all, clippy::nursery, clippy::pedantic, clippy::cargo)]
