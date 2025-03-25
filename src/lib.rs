@@ -8,11 +8,7 @@
 /// See [crate level documentation](crate) for more information.
 #[macro_export]
 macro_rules! opt {
-    ($e:expr) => {
-        {
-            || -> ::core::option::Option<_> { ::core::option::Option::Some($e) }()
-        }
-    };
+    ($e:expr) => {{ || -> ::core::option::Option<_> { ::core::option::Option::Some($e) }() }};
 }
 
 #[cfg(test)]
@@ -31,9 +27,7 @@ mod tests {
             c: i32,
         }
 
-        let v1 = Test1 {
-            a: None,
-        };
+        let v1 = Test1 { a: None };
         let v1 = opt!(v1.a?.b?.c);
         assert!(v1.is_none());
 
@@ -44,7 +38,9 @@ mod tests {
         assert!(v2.is_none());
 
         let v3 = Test1 {
-            a: Some(Test2 { b: Some(Test3 { c: 42 }) }),
+            a: Some(Test2 {
+                b: Some(Test3 { c: 42 }),
+            }),
         };
         let v3 = opt!(v3.a?.b?.c);
         assert_eq!(v3.unwrap(), 42);
@@ -77,9 +73,7 @@ mod tests {
         struct Test2(Option<Test3>);
         struct Test3(i32);
 
-        let v1 = Test1 {
-            a: None,
-        };
+        let v1 = Test1 { a: None };
         let v1 = opt!(v1.a?.0?.0);
         assert!(v1.is_none());
 
