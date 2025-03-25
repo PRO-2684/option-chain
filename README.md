@@ -1,3 +1,5 @@
+<img alt="Logo" src="./logo.svg" align="right" style="width: 4em; height: 4em;"></img>
+
 # option-chain
 
 A macro for using `?` operator in functions that don't return `Option`.
