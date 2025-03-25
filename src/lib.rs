@@ -19,32 +19,29 @@ mod tests {
 
     #[test]
     fn test_macro_named() {
+        #[derive(Clone, Copy)]
         struct Test1 {
             a: Option<Test2>,
         }
+        #[derive(Clone, Copy)]
         struct Test2 {
             b: Option<Test3>,
         }
+        #[derive(Clone, Copy)]
         struct Test3 {
             c: i32,
         }
 
-        let v1 = Test1 { a: None };
-        let v1 = opt!(v1.a?.b?.c);
+        let mut v = Test1 { a: None };
+        let v1 = opt!(v.a?.b?.c);
         assert!(v1.is_none());
 
-        let v2 = Test1 {
-            a: Some(Test2 { b: None }),
-        };
-        let v2 = opt!(v2.a?.b?.c);
+        v.a.replace(Test2 { b: None });
+        let v2 = opt!(v.a?.b?.c);
         assert!(v2.is_none());
 
-        let v3 = Test1 {
-            a: Some(Test2 {
-                b: Some(Test3 { c: 42 }),
-            }),
-        };
-        let v3 = opt!(v3.a?.b?.c);
+        v.a.as_mut().unwrap().b.replace(Test3 { c: 42 });
+        let v3 = opt!(v.a?.b?.c);
         assert_eq!(v3.unwrap(), 42);
     }
 
