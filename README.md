@@ -32,10 +32,6 @@ It just wraps the expression in a closure that returns `Option`:
 
 ```rust
 macro_rules! opt {
-    ($e:expr) => {
-        {
-            || -> Option<_> { Some($e) }()
-        }
-    };
+    ($e:expr) => {{ || -> Option<_> { Some($e) }() }};
 }
 ```
