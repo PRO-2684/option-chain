@@ -1,6 +1,6 @@
 [package]
 name = "option-chain"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 include = ["/src", "LICENSE", "README.md"]
 repository = "https://github.com/PRO-2684/option-chain"
