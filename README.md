@@ -2,6 +2,9 @@
 
 # option-chain
 
+> [!WARNING]
+> Moved to [Candy-Pile](https://github.com/PRO-2684/Candy-Pile/tree/main/option-chain).
+
 A macro for using `?` operator in functions that don't return `Option`.
 
 ## Features
